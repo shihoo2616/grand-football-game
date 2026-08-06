@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <meta
+      name="description"
+      content="Three.js와 Rapier로 제작된 3D 축구 게임"
+    />
+
+    <meta name="theme-color" content="#020711" />
+
+    <title>Grand Football Stadium</title>
+  </head>
+
+  <body>
+    <div id="loading">
+      <div class="loading-card">
+        <div class="loader"></div>
+        <strong>그랜드 스타디움 생성 중...</strong>
+        <span>선수와 골키퍼 AI를 준비하고 있습니다.</span>
+      </div>
+    </div>
+
+    <main id="hud">
+      <section id="scoreboard">
+        <div class="team player-team">PLAYER</div>
+        <div id="player-score" class="score">0</div>
+        <div class="divider">:</div>
+        <div id="cpu-score" class="score">0</div>
+        <div class="team cpu-team">CPU</div>
+        <div id="timer">90</div>
+      </section>
+
+      <section id="difficulty-panel">
+        <label for="difficulty">CPU 난이도</label>
+
+        <select id="difficulty">
+          <option value="easy">쉬움</option>
+          <option value="normal" selected>보통</option>
+          <option value="hard">어려움</option>
+        </select>
+      </section>
+
+      <section id="controls">
+        <h2>조작법</h2>
+
+        <div>
+          <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+          <span>이동 및 드리블</span>
+        </div>
+
+        <div>
+          <kbd>M</kbd>
+          <span>대시</span>
+        </div>
+
+        <div>
+          <kbd>SPACE</kbd>
+          <span>길게 눌러 슛 충전</span>
+        </div>
+
+        <div>
+          <kbd>J</kbd>
+          <span>태클 및 공 탈취</span>
+        </div>
+
+        <p>파란색 선수는 위쪽 골대를 공격합니다.</p>
+      </section>
+
+      <section id="status">
+        <div class="status-title">
+          <span>스태미나</span>
+          <strong id="stamina-value">100</strong>
+        </div>
+
+        <div class="bar">
+          <div id="stamina-fill" class="fill stamina"></div>
+        </div>
+
+        <div class="status-title">
+          <span>슛 파워</span>
+          <strong id="power-value">0%</strong>
+        </div>
+
+        <div class="bar">
+          <div id="power-fill" class="fill power"></div>
+        </div>
+
+        <dl>
+          <div>
+            <dt>공 소유권</dt>
+            <dd id="possession">없음</dd>
+          </div>
+
+          <div>
+            <dt>태클</dt>
+            <dd id="tackle-state">준비됨</dd>
+          </div>
+
+          <div>
+            <dt>CPU 행동</dt>
+            <dd id="cpu-state">수비</dd>
+          </div>
+
+          <div>
+            <dt>상대 골키퍼</dt>
+            <dd id="keeper-state">위치 선정</dd>
+          </div>
+
+          <div>
+            <dt>공 속도</dt>
+            <dd><span id="ball-speed">0.0</span> m/s</dd>
+          </div>
+
+          <div>
+            <dt>관중</dt>
+            <dd><span id="crowd-count">0</span>명</dd>
+          </div>
+        </dl>
+      </section>
+
+      <div id="message">KICK OFF!</div>
+
+      <section id="end-screen">
+        <div class="end-card">
+          <h1>경기 종료</h1>
+          <div id="result">승리!</div>
+          <div id="final-score">0 : 0</div>
+
+          <button id="restart-button" type="button">
+            다시 시작
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
